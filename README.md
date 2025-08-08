@@ -6,7 +6,7 @@ Aplicación full-stack con Express (TypeScript) + Next js
 ```bash
 cd back
 npm install
-npm start
+npm run dev
 ```
 ### Frontend
 ```bash

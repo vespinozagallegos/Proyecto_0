@@ -1,0 +1,27 @@
+node_modules/
+dist/
+.env
+*.log
+
+
+# Ficheros de entorno
+.env.local
+.env.*.local
+
+# Dependencias y caché
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Coverage (si usas tests)
+coverage/
+
+# Configuraciones locales
+*.env.ts  # Si generas archivos de entorno dinámicos en TypeScript

@@ -1,20 +1,19 @@
-import express, { Router, Request, Response, Application } from 'express';
+import server from './server';
+// import express, { Router, Request, Response, Application } from 'express';
+import { PORT } from './config/env';
 
-const PORT: number = 3000;
-const app: Application = express();
-const router: Router = Router();
+import "reflect-metadata"
+import { AppDataSource } from './config/data.source';
 
-app.use(express.json());
-app.use(router);
+AppDataSource.initialize()
+  .then(() => {
+    
+    console.log('Data Source has been initialized!');           //"Database conection succesful" cuando se genera la ruta
 
-router.get('/', (req: Request, res: Response): void => {
-  res.send('Hello World!');
-});
-
-router.get("/api", (req: Request, res: Response): void => {
-  res.json({ message: "Hello from the API" });
-});
-
-app.listen(PORT, (): void => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+    server.listen(PORT, () => {
+      console.log(`Server listening on port: ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error('Error during Data Source initialization:', err);
+  });

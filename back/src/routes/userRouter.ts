@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response, Router } from "express";
 import { validateUserRegisterData } from "../middlewares";
-import { IUserRegisterDTO } from "../dto/UserDTO";
+import { IUserRegisterDTO } from "../dto/UserDto";
+import { registerUserController } from "../controllers/usersController";
 
 const userRouter: Router = Router();
 

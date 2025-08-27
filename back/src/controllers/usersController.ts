@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { IUserRegisterDTO } from "../dto/UserDto";
 import { IPostgresError } from "../interfaces/ErrorInterface";
+import { registerUserService } from "../services/userService";
 
 export const registerUserController = async(req: Request <unknown, unknown, IUserRegisterDTO>, res: Response ): Promise<void> => {
     try {

@@ -1,6 +1,7 @@
 import { EntityManager } from "typeorm";
 import { Credential } from "../entities/Credentials.entity";
 import { CredentialModel } from "../config/data.source";
+import * as bcrypt from 'bcrypt';
 
 export const createCredentialService: (
     entityManager: EntityManager,
@@ -25,6 +26,9 @@ export const checkCredentials = async (username: string, password: string): Prom
         }
     })
     if (!usernameFound) throw new Error(`El usuario ${username} no fue encontrado`)
-    if (usernameFound.password !== password) throw new Error(`Usuario o contraseña erronea`)
-    else return usernameFound.id
+    
+    const isPasswordValid = await bcrypt.compare(password, usernameFound.password);
+
+    if (!isPasswordValid) throw new Error(`Usuario o contraseña erronea`)
+    return usernameFound.id
 }

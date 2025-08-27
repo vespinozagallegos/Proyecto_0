@@ -4,11 +4,13 @@ import { PORT } from './config/env';
 
 import "reflect-metadata"
 import { AppDataSource } from './config/data.source';
+import { log } from 'console';
 
 AppDataSource.initialize()
   .then(() => {
     
-    console.log('Data Source has been initialized!');           //"Database conection succesful" cuando se genera la ruta
+    console.log('Data Source has been initialized!');
+    console.log('Database conection succesful');
 
     server.listen(PORT, () => {
       console.log(`Server listening on port: ${PORT}`);

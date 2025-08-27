@@ -22,7 +22,7 @@ export const checkCredentials = async (username: string, password: string): Prom
             username: username
         }
     })
-    if (!usernameFound) throw new Error(`El usuario ${username} no fue encontrado`)
+    if (!usernameFound) throw new Error(`Usuario o contraseña erronea`); 
     
     const isPasswordValid = await bcrypt.compare(password, usernameFound.password);
 

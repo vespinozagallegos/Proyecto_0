@@ -1,4 +1,5 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Credential } from "./Credentials.entity";
 
 @Entity({
     name: "users"

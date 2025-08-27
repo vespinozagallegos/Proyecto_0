@@ -3,18 +3,15 @@ import { Credential } from "../entities/Credentials.entity";
 import { CredentialModel } from "../config/data.source";
 import * as bcrypt from 'bcrypt';
 
-export const createCredentialService: (
-    entityManager: EntityManager,
-    a: string,
-    b: string
-) => Promise<Credential> = async (
+export const createCredentialService = async (
     entityManager: EntityManager,
     username: string,
     password: string
 ): Promise<Credential> => {
+    const hashedPassword = await bcrypt.hash(password, 10)
     const credentials: Credential = entityManager.create(Credential, {
         username,
-        password,
+        password: hashedPassword,
     });
     return await entityManager.save(credentials);
 };

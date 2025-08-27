@@ -2,6 +2,7 @@ import { AppDataSource } from "../config/data.source";
 import { IUserRegisterDTO } from "../dto/UserDto";
 import { Credential } from "../entities/Credentials.entity";
 import { User } from "../entities/User.entity";
+import { formatRut } from "../utils/rutFormatter";
 import { createCredentialService } from "./credentialService";
 
 export const registerUserService = async (
@@ -19,7 +20,7 @@ export const registerUserService = async (
             name: user.name,
             birthdate: user.birthdate,
             email: user.email,
-            rut: user.rut,
+            rut: formatRut(user.rut),
             credentials: idCredentialsUser,
         });
         return await entityManager.save(newUser);
